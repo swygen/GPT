@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GPT VERSION 2.0 PACKAGE PAGE</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    background: linear-gradient(135deg, #121212, #1f1f1f);
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+  }
+
+  .container {
+    background: rgba(30, 30, 30, 0.9);
+    max-width: 420px;
+    width: 100%;
+    border-radius: 20px;
+    padding: 25px 25px 35px;
+    box-shadow: 0 0 25px #00f0d6aa;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    user-select: none;
+  }
+
+  .container img.header-img {
+    width: 100%;
+    border-radius: 16px;
+    margin-bottom: 18px;
+    box-shadow: 0 0 20px #00f0d6cc;
+    object-fit: cover;
+    max-height: 180px;
+  }
+
+  h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00f0d6;
+    letter-spacing: 1.3px;
+    text-shadow: 0 0 8px #00f0d6;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 18px 0 12px;
+    color: #aaf0e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-shadow: 0 0 6px #00f0d6cc;
+  }
+
+  .option-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .option {
+    background: #222222cc;
+    border-radius: 14px;
+    padding: 15px 12px;
+    cursor: pointer;
+    color: #aaf0e1;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: inset 0 0 8px #00f0d6aa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 2.5px solid transparent;
+  }
+
+  .option:hover {
+    background: #00f0d620;
+    border-color: #00f0d6;
+    color: #00f0d6;
+    box-shadow: 0 0 12px #00f0d6cc;
+  }
+
+  .option.active {
+    background: #00f0d6;
+    color: #111;
+    box-shadow: 0 0 15px #00f0d6cc;
+    border-color: #00fff0;
+    font-weight: 700;
+  }
+
+  .option i.package-icon {
+    font-size: 32px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 8px #00f0d6;
+  }
+
+  .option small.price {
+    font-weight: 700;
+    font-size: 14px;
+    color: #00f0d6cc;
+  }
+
+  .payment-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+
+  #countdownModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    user-select: none;
+  }
+
+  #countdownNumber {
+    font-size: 6rem;
+    font-weight: 900;
+    color: #ff5722;
+    text-shadow: 0 0 15px #ff5722, 0 0 30px #ff7043;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .payment-option {
+    flex: 1;
+    background: #222222cc;
+    border-radius: 14px;
+    padding: 14px 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 2.5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: inset 0 0 10px #00f0d6aa;
+  }
+
+  .payment-option:hover {
+    background: #00f0d620;
+    border-color: #00f0d6;
+    box-shadow: 0 0 12px #00f0d6cc;
+  }
+
+  .payment-option.active {
+    background: #00f0d6;
+    border-color: #00fff0;
+    box-shadow: 0 0 15px #00f0d6cc;
+  }
+
+  .payment-option img {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 3px #00f0d6cc);
+    display: block;
+  }
+
+  .payment-option span {
+    color: #00f0d6;
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: 0 0 6px #00f0d6bb;
+  }
+
+  .total-price {
+    font-weight: 700;
+    font-size: 20px;
+    color: #00f0d6;
+    text-align: center;
+    margin-top: 16px;
+    text-shadow: 0 0 8px #00f0d6cc;
+  }
+
+  button#submitBtn {
+    margin-top: 25px;
+    width: 100%;
+    padding: 16px 0;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    background: linear-gradient(90deg, #00f0d6, #00c0a3);
+    border: none;
+    color: #111;
+    cursor: pointer;
+    box-shadow: 0 0 12px #00f0d6cc;
+    transition: background 0.3s ease;
+  }
+
+  button#submitBtn:hover {
+    background: linear-gradient(90deg, #00c0a3, #00f0d6);
+  }
+
+  @media (max-width: 480px) {
+    .option-box {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .payment-options {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .payment-option {
+      flex: none;
+      width: 100%;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div class="container">
+  <img class="header-img" src="https://i.postimg.cc/JnmVvvSr/payment-png-word-3d-smartphone-remix-transparent-background-53876-974697.jpg" alt="GPT Version 2.0" />
+
+  <h2><i class="fas fa-robot"></i> GPT VERSION 2.0 PACKAGE PAGE</h2>
+
+  <div class="section-title"><i class="fas fa-box-open"></i> Choose Your Package</div>
+  <div class="option-box" id="packageOptions">
+    <div class="option" data-value="3 DAY PACKAGE" data-price="550">
+      <i class="fas fa-calendar-day package-icon"></i>
+      3 DAY PACKAGE
+      <small class="price">৳550</small>
+    </div>
+    <div class="option" data-value="7 DAY PACKAGE" data-price="1250">
+      <i class="fas fa-calendar-week package-icon"></i>
+      7 DAY PACKAGE
+      <small class="price">৳1250</small>
+    </div>
+    <div class="option" data-value="15 DAY PACKAGE" data-price="2400">
+      <i class="fas fa-calendar-alt package-icon"></i>
+      15 DAY PACKAGE
+      <small class="price">৳2400</small>
+    </div>
+    <div class="option" data-value="30 DAY PACKAGE" data-price="4700">
+      <i class="fas fa-calendar-check package-icon"></i>
+      30 DAY PACKAGE
+      <small class="price">৳4700</small>
+    </div>
+  </div>
+
+  <div class="section-title"><i class="fas fa-money-bill-wave"></i> Payment Method</div>
+  <div class="payment-options" id="paymentOptions">
+    <div class="payment-option" data-method="BKASH">
+      <img src="https://assets.onecompiler.app/43ea4pg72/43eq73f47/download%20(3).png" alt="Bkash" />
+      <span>Bkash</span>
+    </div>
+    <div class="payment-option" data-method="NAGAD">
+      <img src="https://assets.onecompiler.app/43ea4pg72/43eq73f47/download%20(2).png" alt="Nagad" />
+      <span>Nagad</span>
+    </div>
+    <div class="payment-option" data-method="ROCKET">
+      <img src="https://assets.onecompiler.app/43ea4pg72/43eq73f47/download%20(6).png" alt="Rocket" />
+      <span>Rocket</span>
+    </div>
+  </div>
+
+  <div class="total-price">
+    Total Price: <span id="totalPrice">৳0</span>
+  </div>
+
+  <button id="submitBtn">Submit Payment</button>
+</div>
+<!-- Countdown Modal -->
+<div id="countdownModal" style="display:none;">
+  <div id="countdownNumber">3</div>
+</div>
+<script>
+  const packageOptions = document.querySelectorAll('#packageOptions .option');
+  const paymentOptions = document.querySelectorAll('#paymentOptions .payment-option');
+  const totalPrice = document.getElementById('totalPrice');
+  const submitBtn = document.getElementById('submitBtn');
+
+  let selectedPackage = null;
+  let selectedPayment = null;
+
+  // প্যাকেজ সিলেকশন
+  packageOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      packageOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+
+      selectedPackage = {
+        name: option.getAttribute('data-value'),
+        price: parseInt(option.getAttribute('data-price'))
+      };
+      totalPrice.innerText = `৳${selectedPackage.price}`;
+    });
+  });
+
+  // পেমেন্ট সিলেকশন
+  paymentOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      paymentOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+
+      selectedPayment = option.getAttribute('data-method');
+    });
+  });
+
+  // সাবমিট বাটন
+  submitBtn.addEventListener('click', () => {
+    if (!selectedPackage || !selectedPayment) {
+      alert("⚠️ Please select both a package and a payment method.");
+      return;
+    }
+
+    const day = selectedPackage.name.split(" ")[0]; // 3, 7, 15, 30
+    const methodLower = selectedPayment.toLowerCase(); // bkash, nagad, rocket
+
+    const redirectPage = `${methodLower}${day}.html`;
+    startCountdownAndRedirect(redirectPage);
+  });
+
+  // Countdown & Redirect
+  function startCountdownAndRedirect(redirectPage) {
+    let count = 3;
+    submitBtn.disabled = true;
+    submitBtn.innerText = `Redirecting in ${count}...`;
+
+    const interval = setInterval(() => {
+      count--;
+      if (count <= 0) {
+        clearInterval(interval);
+        submitBtn.innerText = "Redirecting...";
+        window.location.href = redirectPage;
+      } else {
+        submitBtn.innerText = `Redirecting in ${count}...`;
+      }
+    }, 1000);
+  }
+</script>
+</body>
+
+</html>
